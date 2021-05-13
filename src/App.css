@@ -1,10 +1,18 @@
 .App {
-  display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  width: 70%;
+  width: 80%;
   margin: auto;
   margin-top: 3em;
+}
+
+.delete-div {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.delete-btn {
+  padding-inline: 10px;
+  margin-left: 50px;
+  text-align: end;
 }

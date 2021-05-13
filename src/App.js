@@ -6,7 +6,7 @@ import React, { useState } from "react";
 const { TextArea } = Input;
 
 function App() {
-  const [text, setText] = useState([""]);
+  const [text, setText] = useState([]);
   const [input, setInput] = useState("");
 
   return (
@@ -14,7 +14,26 @@ function App() {
       <div>
         <p>
           {text.map((item) => {
-            return <p>{item}</p>;
+            return (
+              <div className="delete-div" key={item}>
+                <p>{item}</p>
+                <Button
+                  onClick={() => {
+                    const newArr = [];
+                    for (let i of text) {
+                      if (i !== item) {
+                        newArr.push(i);
+                      }
+                    }
+                    setText(newArr);
+                  }}
+                  className="delete-btn"
+                  type="secondary"
+                >
+                  Excluir
+                </Button>
+              </div>
+            );
           })}
         </p>
       </div>
@@ -30,7 +49,6 @@ function App() {
           setText((text) => [...text, input]);
           setInput("");
         }}
-        type="primary"
       >
         CLICK
       </Button>
