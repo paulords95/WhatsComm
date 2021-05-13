@@ -1,23 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Button, Input } from "antd";
+
+import React, { useState } from "react";
+
+const { TextArea } = Input;
 
 function App() {
+  const [text, setText] = useState([""]);
+  const [input, setInput] = useState("");
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      <div>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          {text.map((item) => {
+            return <p>{item}</p>;
+          })}
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      </div>
+      <TextArea
+        onChange={(e) => {
+          setInput(e.target.value);
+        }}
+        value={input}
+        rows={4}
+      />
+      <Button
+        onClick={() => {
+          setText((text) => [...text, input]);
+          setInput("");
+        }}
+        type="primary"
+      >
+        CLICK
+      </Button>
     </div>
   );
 }
